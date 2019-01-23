@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ConferenceTrackManagement.Repository
 {
-    public class SessionRepository : IRepository.IRepository<Session>
+    public class SessionRepository : ISessionRepository<Session>
     {
         //delete an session from list
         public bool Delete(Session obj)

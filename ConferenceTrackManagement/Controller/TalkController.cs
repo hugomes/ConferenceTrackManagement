@@ -3,19 +3,17 @@ using ConferenceTrackManagement.Model;
 using ConferenceTrackManagement.Repository;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using ConferenceTrackManagement.IRepository;
 
 namespace ConferenceTrackManagement.Controller
 {
     public class TalkController
     {
-        TalkRepository talkRepository;
+        private ITalkRepository<Talk> _talkRepository;
         public TalkController()
         {
-            talkRepository = new TalkRepository();
+            _talkRepository = new TalkRepository();
         }
 
         public bool AddTalk(Talk talk)
@@ -26,7 +24,7 @@ namespace ConferenceTrackManagement.Controller
                 throw new Exception(ExceptionsMessages.EXCEPTION_TITLE_NO_NUMBERS);
             else
             {
-                return talkRepository.Save(talk);
+                return _talkRepository.Save(talk);
             }
         }
 
@@ -38,13 +36,13 @@ namespace ConferenceTrackManagement.Controller
                 throw new Exception(ExceptionsMessages.EXCEPTION_TITLE_NO_NUMBERS);
             else
             {
-                return talkRepository.Save(new Talk() { Title = title, Duration = duration, IsLightning = isLightning });
+                return _talkRepository.Save(new Talk() { Title = title, Duration = duration, IsLightning = isLightning });
             }
         }
 
         public void CreateDefaultTalks()
         {
-            talkRepository.DeleteAll();
+            _talkRepository.DeleteAll();
             AddTalk("Writing Fast Tests Against Enterprise Rails", 60, false);
             AddTalk("Overdoing it in Python", 45, false);
             AddTalk("Lua for the Masses", 30, false);
@@ -68,7 +66,7 @@ namespace ConferenceTrackManagement.Controller
 
         public List<Talk> ListAllTalks()
         {
-            return talkRepository.List();
+            return _talkRepository.List();
         }
     }
 }

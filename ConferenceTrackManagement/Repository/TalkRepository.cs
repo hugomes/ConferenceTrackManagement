@@ -1,10 +1,11 @@
 ﻿using ConferenceTrackManagement.Model;
 using System.Collections.Generic;
 using System.Linq;
+using ConferenceTrackManagement.IRepository;
 
 namespace ConferenceTrackManagement.Repository
 {
-    public class TalkRepository : IRepository.IRepository<Talk>
+    public class TalkRepository : ITalkRepository<Talk>
     {
         //delete an talk from list
         public bool Delete(Talk obj)

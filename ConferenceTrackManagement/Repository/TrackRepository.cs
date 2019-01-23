@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ConferenceTrackManagement.Repository
 {
-    public class TrackRepository : IRepository.IRepository<Track>
+    public class TrackRepository : IRepository.ITrackRepository<Track>
     {
         //delete an track from list
         public bool Delete(Track obj)

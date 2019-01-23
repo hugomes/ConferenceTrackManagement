@@ -1,21 +1,20 @@
 ﻿using ConferenceTrackManagement.Library;
 using ConferenceTrackManagement.Model;
-using ConferenceTrackManagement.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
+using ConferenceTrackManagement.IRepository;
+using ConferenceTrackManagement.Repository;
 
 namespace ConferenceTrackManagement.Controller
 {
     public class SchedulingController
     {
-        TalkRepository talkRepository;
+        private readonly ITalkRepository<Talk> _talkRepository;
         public SchedulingController()
         {
-            talkRepository = new TalkRepository();
+            _talkRepository = new TalkRepository();
         }
 
         List<List<Talk>> listTalkMother = new List<List<Talk>>();
@@ -23,8 +22,9 @@ namespace ConferenceTrackManagement.Controller
         {
             listTalkMother.Clear();
             //get all talks
-            List<Talk> talkList = talkRepository.List();
+            List<Talk> talkList = _talkRepository.List();
 
+            List<Task> tasksList = new List<Task>();
             int numberLoops = 1000;
             for (int i = 0; i < numberLoops; i++)
             {
@@ -43,22 +43,13 @@ namespace ConferenceTrackManagement.Controller
 
                 if (talkListExist == false)
                 {
-                    //if don't exist a talk list with the same order, consider the list to get the fitness
                     listTalkMother.Add(new List<Talk>(talkList));
+                    //calculate fitness in parallel to improve performance
+                    Task task = new Task(() => Fitness(talkList, dayOfTheConference));
+                    task.Start();
+                    tasksList.Add(task);
                 }
             }
-
-            int threadIndex = listTalkMother.Count - 1;
-            List<Task> tasksList = new List<Task>();
-            //get each one list of talks from all lists talks combinations
-            foreach (List<Talk> talkMotherDone in listTalkMother)
-            {
-                //calculate fitness in parallel to improve performance
-                Task task = new Task(() => Fitness(talkMotherDone, dayOfTheConference));
-                task.Start();
-                tasksList.Add(task);
-            }
-            //wait all parallel tasks end
             Task.WaitAll(tasksList.ToArray());
             smallerFitness = 100000;
             return bestTrackList;

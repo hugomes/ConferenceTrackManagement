@@ -45,7 +45,10 @@
   <ItemGroup>
     <Compile Include="Controller\TalkController.cs" />
     <Compile Include="Controller\SchedulingController.cs" />
-    <Compile Include="IRepository\IRepository.cs" />
+    <Compile Include="IRepository\IRepository .cs" />
+    <Compile Include="IRepository\ITrackRepository .cs" />
+    <Compile Include="IRepository\ITalkRepository .cs" />
+    <Compile Include="IRepository\ISessionRepository.cs" />
     <Compile Include="Library\ExceptionsMessages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

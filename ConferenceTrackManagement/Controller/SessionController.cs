@@ -1,20 +1,18 @@
 ﻿using ConferenceTrackManagement.Library;
 using ConferenceTrackManagement.Model;
+using ConferenceTrackManagement.IRepository;
 using ConferenceTrackManagement.Repository;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConferenceTrackManagement.Controller
 {
     public class SessionController
     {
-        public SessionRepository sessionRepository;
+        private readonly ISessionRepository<Session> _sessionRepository;
         public SessionController()
         {
-            sessionRepository = new SessionRepository();
+            _sessionRepository = new SessionRepository();
         }
 
         //create an instance of Session to the default session network
@@ -41,7 +39,7 @@ namespace ConferenceTrackManagement.Controller
                     session.SchedulingList = new List<Scheduling>();
                     session.SchedulingList.Add(scheduling);
                 }
-                sessionRepository.Save(session);
+                _sessionRepository.Save(session);
                 return session;
             }
             catch (Exception exception)
@@ -72,7 +70,7 @@ namespace ConferenceTrackManagement.Controller
                 session.SchedulingList = new List<Scheduling>();
                 session.SchedulingList.Add(scheduling);
 
-                sessionRepository.Save(session);
+                _sessionRepository.Save(session);
                 return session;
             }
             catch (Exception exception)
@@ -92,7 +90,7 @@ namespace ConferenceTrackManagement.Controller
                 //for definition the morning session end at 12PM
                 session.EndHour = new DateTime(dayOfTheSession.Year, dayOfTheSession.Month, dayOfTheSession.Day, 12, 0, 0);
                 session.SchedulingList = new List<Scheduling>();
-                sessionRepository.Save(session);
+                _sessionRepository.Save(session);
                 return session;
 
             }
@@ -112,7 +110,7 @@ namespace ConferenceTrackManagement.Controller
                 session.StartHour = new DateTime(dayOfTheSession.Year, dayOfTheSession.Month, dayOfTheSession.Day, 13, 0, 0);
                 session.EndHour = new DateTime(dayOfTheSession.Year, dayOfTheSession.Month, dayOfTheSession.Day, 17, 0, 0);
                 session.SchedulingList = new List<Scheduling>();
-                sessionRepository.Save(session);
+                _sessionRepository.Save(session);
                 return session;
             }
             catch (Exception exception)
