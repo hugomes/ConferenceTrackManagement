@@ -126,19 +126,25 @@
   <data name="EXCEPTION_TITLE_NO_NUMBERS" xml:space="preserve">
     <value>The Title don't can have numbers.</value>
   </data>
-  <data name="Program_ScheduleConferenceTalks_Invalid_date__Please_write_a_date_in_format_YYYY_MM_DD" xml:space="preserve">
+  <data name="MESSAGE_INVALID_DATE" xml:space="preserve">
     <value>Invalid date! Please write a date in format YYYY/MM/DD</value>
   </data>
-  <data name="Program_ScheduleConferenceTalks_Please_try_again_" xml:space="preserve">
+  <data name="MESSAGE_TRY_AGAIN" xml:space="preserve">
     <value>Please try again.</value>
   </data>
-  <data name="Program_Main_You_need_write_a_valid_number_" xml:space="preserve">
+  <data name="MESSAGE_INVALID_NUMBER" xml:space="preserve">
     <value>You need write a valid number.</value>
   </data>
-  <data name="Program_Main_Command_not_found_" xml:space="preserve">
+  <data name="EXCEPTION_COMMAND_NOT_FOUND" xml:space="preserve">
     <value>Command not found.</value>
   </data>
-  <data name="Program_AddTalk_Talk_add_successfuly_" xml:space="preserve">
+  <data name="MESSAGE_TALK_ADD_SUCCESSFULY" xml:space="preserve">
     <value>Talk add successfuly.</value>
+  </data>
+  <data name="MESSAGE_INVALID_NAME" xml:space="preserve">
+    <value>You need write a Name.</value>
+  </data>
+  <data name="MESSAGE_PERSONS_AT_TALK" xml:space="preserve">
+    <value>The Talk need up to 3 Persons</value>
   </data>
 </root>

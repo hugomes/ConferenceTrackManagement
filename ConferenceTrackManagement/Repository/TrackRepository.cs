@@ -23,7 +23,7 @@ namespace ConferenceTrackManagement.Repository
         }
 
         //list all tracks
-        public List<Track> List()
+        public IList<Track> List()
         {
             return DataBaseInMemory.DataBaseTrack;
         }

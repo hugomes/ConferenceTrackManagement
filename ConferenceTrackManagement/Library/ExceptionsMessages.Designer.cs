@@ -61,6 +61,15 @@ namespace ConferenceTrackManagement.Library {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Command not found..
+        /// </summary>
+        public static string EXCEPTION_COMMAND_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("EXCEPTION_COMMAND_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a The Lightning talk need to have 5 minutes..
         /// </summary>
         public static string EXCEPTION_LIGHTNING_NOT_EQUAL_FIVE_MINUTES {
@@ -88,48 +97,56 @@ namespace ConferenceTrackManagement.Library {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Talk add successfuly..
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Invalid date! Please write a date in format YYYY/MM/DD.
         /// </summary>
-        public static string Program_AddTalk_Talk_add_successfuly_ {
+        public static string MESSAGE_INVALID_DATE {
             get {
-                return ResourceManager.GetString("Program_AddTalk_Talk_add_successfuly_", resourceCulture);
+                return ResourceManager.GetString("MESSAGE_INVALID_DATE", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Command not found..
+        ///   Consulta uma cadeia de caracteres localizada semelhante a You need write a Name..
         /// </summary>
-        public static string Program_Main_Command_not_found_ {
+        public static string MESSAGE_INVALID_NAME {
             get {
-                return ResourceManager.GetString("Program_Main_Command_not_found_", resourceCulture);
+                return ResourceManager.GetString("MESSAGE_INVALID_NAME", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a You need write a valid number..
         /// </summary>
-        public static string Program_Main_You_need_write_a_valid_number_ {
+        public static string MESSAGE_INVALID_NUMBER {
             get {
-                return ResourceManager.GetString("Program_Main_You_need_write_a_valid_number_", resourceCulture);
+                return ResourceManager.GetString("MESSAGE_INVALID_NUMBER", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Invalid date! Please write a date in format YYYY/MM/DD.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The Talk need up to 3 Persons.
         /// </summary>
-        public static string Program_ScheduleConferenceTalks_Invalid_date__Please_write_a_date_in_format_YYYY_MM_DD {
+        public static string MESSAGE_PERSONS_AT_TALK {
             get {
-                return ResourceManager.GetString("Program_ScheduleConferenceTalks_Invalid_date__Please_write_a_date_in_format_YYYY_" +
-                        "MM_DD", resourceCulture);
+                return ResourceManager.GetString("MESSAGE_PERSONS_AT_TALK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Talk add successfuly..
+        /// </summary>
+        public static string MESSAGE_TALK_ADD_SUCCESSFULY {
+            get {
+                return ResourceManager.GetString("MESSAGE_TALK_ADD_SUCCESSFULY", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Please try again..
         /// </summary>
-        public static string Program_ScheduleConferenceTalks_Please_try_again_ {
+        public static string MESSAGE_TRY_AGAIN {
             get {
-                return ResourceManager.GetString("Program_ScheduleConferenceTalks_Please_try_again_", resourceCulture);
+                return ResourceManager.GetString("MESSAGE_TRY_AGAIN", resourceCulture);
             }
         }
     }

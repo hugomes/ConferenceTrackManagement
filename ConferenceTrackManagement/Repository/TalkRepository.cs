@@ -26,7 +26,7 @@ namespace ConferenceTrackManagement.Repository
         }
 
         //list all talks
-        public List<Talk> List()
+        public IList<Talk> List()
         {
             return DataBaseInMemory.DataBaseTalk;
         }

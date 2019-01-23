@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Controller.Tests\SessionControllerTests.cs" />
     <Compile Include="Controller.Tests\SchedulingControllerTests.cs" />
+    <Compile Include="Controller.Tests\PersonControllerTests.cs" />
     <Compile Include="Model.Test\TrackTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controller.Tests\TalkControllerTests.cs" />

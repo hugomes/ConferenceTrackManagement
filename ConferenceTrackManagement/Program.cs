@@ -35,21 +35,24 @@ namespace ConferenceTrackManagement
                         case 4:
                             ListAllTalks();
                             break;
+                        case 5:
+                            AddPersonAtTalk();
+                            break;
                         default:
-                            Console.WriteLine(ExceptionsMessages.Program_Main_Command_not_found_);
+                            Console.WriteLine(ExceptionsMessages.EXCEPTION_COMMAND_NOT_FOUND);
                             break;
                     }
                 }
                 else
                 {
-                    Console.WriteLine(ExceptionsMessages.Program_Main_You_need_write_a_valid_number_);
+                    Console.WriteLine(ExceptionsMessages.MESSAGE_INVALID_NUMBER);
                 }
             }
         }
 
         private static void ListAllTalks()
         {
-            List<Talk> talkList = _talkController.ListAllTalks();
+            IList<Talk> talkList = _talkController.ListAllTalks();
             Console.Clear();
             Console.WriteLine("List of talks");
             Console.WriteLine("");
@@ -118,8 +121,21 @@ namespace ConferenceTrackManagement
                 if (_talkController.AddTalk(talk))
                 {
                     Console.Clear();
-                    Console.WriteLine(ExceptionsMessages.Program_AddTalk_Talk_add_successfuly_);
+                    Console.WriteLine(ExceptionsMessages.MESSAGE_TALK_ADD_SUCCESSFULY);
                 }
+            }
+            catch (Exception talkException)
+            {
+                Console.Clear();
+                Console.WriteLine(talkException.Message);
+            }
+        }
+
+        private static void AddPersonAtTalk()
+        {
+            try
+            {
+
             }
             catch (Exception talkException)
             {
@@ -173,14 +189,14 @@ namespace ConferenceTrackManagement
                 }
                 else
                 {
-                    Console.WriteLine(ExceptionsMessages.Program_ScheduleConferenceTalks_Invalid_date__Please_write_a_date_in_format_YYYY_MM_DD);
+                    Console.WriteLine(ExceptionsMessages.MESSAGE_INVALID_DATE);
                 }
             }
             catch (Exception exception)
             {
                 Console.WriteLine(exception.Message);
                 Console.WriteLine("");
-                Console.WriteLine(ExceptionsMessages.Program_ScheduleConferenceTalks_Please_try_again_);
+                Console.WriteLine(ExceptionsMessages.MESSAGE_TRY_AGAIN);
             }
         }
     }

@@ -22,7 +22,7 @@ namespace ConferenceTrackManagement.Controller
         {
             listTalkMother.Clear();
             //get all talks
-            List<Talk> talkList = _talkRepository.List();
+            IList<Talk> talkList = _talkRepository.List();
 
             List<Task> tasksList = new List<Task>();
             int numberLoops = 1000;
@@ -58,7 +58,7 @@ namespace ConferenceTrackManagement.Controller
         private static List<Track> bestTrackList = new List<Track>(); //used to get the best
         private static int smallerFitness = 100000;//used to find the best schedule for the event
         //calculate de fitness number to find the better hours
-        private static void Fitness(List<Talk> talkList, DateTime dayOfTheConference) {
+        private static void Fitness(IList<Talk> talkList, DateTime dayOfTheConference) {
             int fitnessScore = 0;
             List<Track> trackList = new List<Track>();
             int? indexNextTrack = 0;

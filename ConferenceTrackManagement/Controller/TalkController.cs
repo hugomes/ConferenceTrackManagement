@@ -64,9 +64,23 @@ namespace ConferenceTrackManagement.Controller
             AddTalk("User Interface CSS in Rails Apps", 30, false);
         }
 
-        public List<Talk> ListAllTalks()
+        public IList<Talk> ListAllTalks()
         {
             return _talkRepository.List();
+        }
+
+        public bool AddAudience(Person person, Talk talk)
+        {
+            if (talk.Audience.Count >= 3)
+                throw new IndexOutOfRangeException(ExceptionsMessages.MESSAGE_PERSONS_AT_TALK);
+            else
+            {
+                if (talk.Audience == null)
+                    talk.Audience = new List<Person>();
+                talk.Audience.Add(person);
+            }
+
+            return true;
         }
     }
 }

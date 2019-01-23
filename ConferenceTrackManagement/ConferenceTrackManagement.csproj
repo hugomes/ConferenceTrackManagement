@@ -43,9 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\PersonController.cs" />
     <Compile Include="Controller\TalkController.cs" />
     <Compile Include="Controller\SchedulingController.cs" />
     <Compile Include="IRepository\IRepository .cs" />
+    <Compile Include="IRepository\IPersonRepository.cs" />
     <Compile Include="IRepository\ITrackRepository .cs" />
     <Compile Include="IRepository\ITalkRepository .cs" />
     <Compile Include="IRepository\ISessionRepository.cs" />
@@ -55,6 +57,7 @@
       <DependentUpon>ExceptionsMessages.resx</DependentUpon>
     </Compile>
     <Compile Include="Library\RandomList.cs" />
+    <Compile Include="Model\Person.cs" />
     <Compile Include="Model\Talk.cs" />
     <Compile Include="Model\Scheduling.cs" />
     <Compile Include="Model\Session.cs" />
@@ -64,6 +67,7 @@
     <Compile Include="Controller\SessionController.cs" />
     <Compile Include="Repository\TalkRepository.cs" />
     <Compile Include="Repository\DataBaseInMemory.cs" />
+    <Compile Include="Repository\PersonRepository.cs" />
     <Compile Include="Repository\TrackRepository.cs" />
     <Compile Include="Repository\SessionRepository.cs" />
   </ItemGroup>

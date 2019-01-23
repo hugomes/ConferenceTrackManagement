@@ -4,6 +4,7 @@ using ConferenceTrackManagement.Model;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,7 +44,7 @@ namespace ConferenceTrackManagement.Tests.Controller.Tests
             Talk talk = new Talk() { Title = "Talk test", Duration = 30, IsLightning = false };
             TalkController talkController = new TalkController();
             talkController.AddTalk(talk);
-            Assert.Contains(talk, talkController.ListAllTalks());
+            Assert.Contains(talk, new Collection<Talk>(talkController.ListAllTalks()));
         }
 
         [Test]
@@ -53,7 +54,7 @@ namespace ConferenceTrackManagement.Tests.Controller.Tests
             TalkController talkController = new TalkController();
             talkController.CreateDefaultTalks();
             talkController.AddTalk(talk);
-            Assert.Contains(talk, talkController.ListAllTalks());
+            Assert.Contains(talk, new Collection<Talk>(talkController.ListAllTalks()));
         }
 
         [Test]
@@ -69,8 +70,31 @@ namespace ConferenceTrackManagement.Tests.Controller.Tests
         {
             TalkController talkController = new TalkController();
             talkController.CreateDefaultTalks();
-            talkController.ListAllTalks();
             Assert.Greater(talkController.ListAllTalks().Count, 0);
+        }
+
+        [Test]
+        public void InsertAudienceTalk_NeedInsertUpTo3PersonsAtTalk()
+        {
+            TalkController talkController = new TalkController();
+            talkController.CreateDefaultTalks();
+            IList<Talk> talkList = talkController.ListAllTalks();
+            talkController.AddAudience(new Person() {Name = "Hugo"}, talkList[0]);
+            talkController.AddAudience(new Person() {Name = "Camila"}, talkList[0]);
+            talkController.AddAudience(new Person() {Name = "Diana"}, talkList[0]);
+            Assert.That(() => talkController.AddAudience(new Person() { Name = "Arthur" }, talkList[0]),
+                Throws.TypeOf<IndexOutOfRangeException>().With.Message.EqualTo(ExceptionsMessages.MESSAGE_PERSONS_AT_TALK));
+        }
+
+        [Test]
+        public void InsertAudienceTalk_InsertPersonAtTalk()
+        {
+            TalkController talkController = new TalkController();
+            talkController.CreateDefaultTalks();
+            IList<Talk> talkList = talkController.ListAllTalks();
+            Person person = new Person() {Name = "Hugo"};
+            talkList[0].Audience.Add(person);
+            Assert.Contains(person, new Collection<Person>(talkList[0].Audience));
         }
     }
 }

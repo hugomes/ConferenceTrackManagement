@@ -23,7 +23,7 @@ namespace ConferenceTrackManagement.Repository
         }
 
         //list all sessions
-        public List<Session> List()
+        public IList<Session> List()
         {
             return DataBaseInMemory.DataBaseSession;
         }

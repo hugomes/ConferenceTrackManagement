@@ -6,7 +6,7 @@ namespace ConferenceTrackManagement.IRepository
     {
         bool Save(T obj);//add an object to list
         T Get(T obj);//get an object from list
-        List<T> List();//list all objects
+        IList<T> List();//list all objects
         bool Delete(T obj);//delete an object from list
     }
 }

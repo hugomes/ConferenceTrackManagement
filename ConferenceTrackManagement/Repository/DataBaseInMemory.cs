@@ -9,9 +9,10 @@ namespace ConferenceTrackManagement.Repository
 {
     static class DataBaseInMemory
     {
-        public static List<Talk> DataBaseTalk = new List<Talk>();
-        public static List<Scheduling> DataBaseScheduling = new List<Scheduling>();
-        public static List<Track> DataBaseTrack = new List<Track>();
-        public static List<Session> DataBaseSession = new List<Session>();
+        public static IList<Talk> DataBaseTalk = new List<Talk>();
+        public static IList<Scheduling> DataBaseScheduling = new List<Scheduling>();
+        public static IList<Track> DataBaseTrack = new List<Track>();
+        public static IList<Session> DataBaseSession = new List<Session>();
+        public static IList<Person> DataBasePerson = new List<Person>();
     }
 }
