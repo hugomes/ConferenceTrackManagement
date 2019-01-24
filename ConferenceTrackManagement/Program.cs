@@ -50,19 +50,21 @@ namespace ConferenceTrackManagement
             }
         }
 
-        private static void ListAllTalks()
+        private static int ListAllTalks()
         {
             IList<Talk> talkList = _talkController.ListAllTalks();
             Console.Clear();
             Console.WriteLine("List of talks");
             Console.WriteLine("");
-            foreach (Talk talkObject in talkList)
+            for (int i = 0; i < talkList.Count; i++)
             {
-                Console.WriteLine(talkObject.Title + " - " + talkObject.Duration);
+                Console.WriteLine($"{i+1} - {talkList[i].Title} - {talkList[i].Duration}");
             }
+
             Console.WriteLine("----------------------------------------------------------------------");
             Console.WriteLine(talkList.Count + " talks listed.");
             Console.WriteLine("");
+            return talkList.Count;
         }
 
         private static string WriteOptions()
@@ -74,6 +76,7 @@ namespace ConferenceTrackManagement
             Console.WriteLine("2 - Scheduling talks");
             Console.WriteLine("3 - Add talk");
             Console.WriteLine("4 - List all Talks");
+            Console.WriteLine("5 - Add a Person at Talks");
             Console.WriteLine("9 - Exit");
             Console.WriteLine("------------------------------------------------------------------------------");
             string optionSelected = Console.ReadLine();
@@ -135,7 +138,33 @@ namespace ConferenceTrackManagement
         {
             try
             {
+                Console.Clear();
+                Console.WriteLine("Add a the Person at talk");
 
+                Console.WriteLine("Write the name of the Person: ");
+                string Name = Console.ReadLine();
+
+                int qtdTalks = ListAllTalks();
+
+                Console.WriteLine("Write the number of the Talk above to add the Person");
+                string numberString = Console.ReadLine();
+                int numberInt;
+                while (!int.TryParse(numberString, out numberInt) && (numberInt >= 1 && numberInt <= qtdTalks))
+                {
+                    Console.WriteLine(ExceptionsMessages.MESSAGE_INVALID_TALK_INDEX, qtdTalks);
+                    numberString = Console.ReadLine();
+                }
+
+                PersonController personController = new PersonController();
+                Person person = personController.AddPerson(Name);
+
+                Talk talk = _talkController.GetTalkByIndex(numberInt-1);
+                _talkController.AddAudience(person, talk);
+                Console.Clear();
+
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"Person {person.Name} add successfully at {talk.Title}.");
+                Console.ForegroundColor = ConsoleColor.White;
             }
             catch (Exception talkException)
             {

@@ -124,6 +124,24 @@ namespace ConferenceTrackManagement.Library {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Talk&apos;s number is invalid..
+        /// </summary>
+        public static string MESSAGE_INVALID_TALK {
+            get {
+                return ResourceManager.GetString("MESSAGE_INVALID_TALK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Invalid Talk! Please write a valid number between 1 and {0}..
+        /// </summary>
+        public static string MESSAGE_INVALID_TALK_INDEX {
+            get {
+                return ResourceManager.GetString("MESSAGE_INVALID_TALK_INDEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a The Talk need up to 3 Persons.
         /// </summary>
         public static string MESSAGE_PERSONS_AT_TALK {

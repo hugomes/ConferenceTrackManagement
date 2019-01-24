@@ -69,6 +69,18 @@ namespace ConferenceTrackManagement.Controller
             return _talkRepository.List();
         }
 
+        public Talk GetTalkByIndex(int index)
+        {
+            try
+            {
+                return _talkRepository.GetTalkByIndex(index);
+            }
+            catch (Exception e)
+            {
+                throw new IndexOutOfRangeException(ExceptionsMessages.MESSAGE_INVALID_TALK);
+            }
+        }
+
         public bool AddAudience(Person person, Talk talk)
         {
             if (talk.Audience.Count >= 3)

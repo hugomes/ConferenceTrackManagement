@@ -96,5 +96,22 @@ namespace ConferenceTrackManagement.Tests.Controller.Tests
             talkList[0].Audience.Add(person);
             Assert.Contains(person, new Collection<Person>(talkList[0].Audience));
         }
+
+        [Test]
+        public void GetTalkByIndex_SelectOneTalkByIndexArray()
+        {
+            TalkController talkController = new TalkController();
+            talkController.CreateDefaultTalks();
+            Assert.IsInstanceOf(typeof(Talk), talkController.GetTalkByIndex(18));
+        }
+
+        [Test]
+        public void GetTalkByIndex_SelectOneTalkOutOfIndexArray()
+        {
+            TalkController talkController = new TalkController();
+            talkController.CreateDefaultTalks();
+            Assert.That(() => talkController.GetTalkByIndex(talkController.ListAllTalks().Count),
+                Throws.TypeOf<IndexOutOfRangeException>().With.Message.EqualTo(ExceptionsMessages.MESSAGE_INVALID_TALK));
+        }
     }
 }

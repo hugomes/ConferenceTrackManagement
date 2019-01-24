@@ -147,4 +147,10 @@
   <data name="MESSAGE_PERSONS_AT_TALK" xml:space="preserve">
     <value>The Talk need up to 3 Persons</value>
   </data>
+  <data name="MESSAGE_INVALID_TALK_INDEX" xml:space="preserve">
+    <value>Invalid Talk! Please write a valid number between 1 and {0}.</value>
+  </data>
+  <data name="MESSAGE_INVALID_TALK" xml:space="preserve">
+    <value>Talk's number is invalid.</value>
+  </data>
 </root>

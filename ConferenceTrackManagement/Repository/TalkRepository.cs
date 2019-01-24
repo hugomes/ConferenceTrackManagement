@@ -25,6 +25,11 @@ namespace ConferenceTrackManagement.Repository
             return (Talk)DataBaseInMemory.DataBaseTalk.Where(a => a.Title.Contains(obj.Title));
         }
 
+        public Talk GetTalkByIndex(int index)
+        {
+            return (Talk)DataBaseInMemory.DataBaseTalk[index];
+        }
+
         //list all talks
         public IList<Talk> List()
         {
