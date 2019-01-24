@@ -55,5 +55,22 @@ namespace ConferenceTrackManagement.Tests.Controller.Tests
             Assert.AreEqual(qtdTalkInDefaultSchedule, totalTalk);
         }
 
+        [Test]
+        public void SchedulingTalks_TheSessionsStartBetween17End20()
+        {
+            TalkController talkController = new TalkController();
+            talkController.CreateDefaultTalks();
+
+            SchedulingController schedulingController = new SchedulingController();
+            List<Track> trackList = schedulingController.ScheduleTalks(new DateTime().Date);
+
+            foreach (Track track in trackList)
+            {
+                Session session = track.SessionList.FirstOrDefault(x => x.Title.Contains("Network"));
+                bool startHourIsValid = session.StartHour.Hour >= 16;
+                bool endHourIsValid = session.StartHour.Hour <= 17;
+                Assert.AreEqual(true, startHourIsValid && endHourIsValid);
+            }
+        }
     }
 }

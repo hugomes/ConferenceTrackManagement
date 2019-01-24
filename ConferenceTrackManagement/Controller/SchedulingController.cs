@@ -121,7 +121,7 @@ namespace ConferenceTrackManagement.Controller
                 else
                     indexNextTrack++;
 
-                DateTime networkStartHour = new DateTime(lastEndHourScheduleOfTheSession.Year, lastEndHourScheduleOfTheSession.Month, lastEndHourScheduleOfTheSession.Day, 16, 0, 0);
+                DateTime networkStartHour = new DateTime(lastEndHourScheduleOfTheSession.Year, lastEndHourScheduleOfTheSession.Month, lastEndHourScheduleOfTheSession.Day, 16, 00, 0);
                 if (lastEndHourScheduleOfTheSession < networkStartHour)
                 {
                     track.SessionList[3].StartHour = track.SessionList[3].SchedulingList[0].StartHour = networkStartHour;
